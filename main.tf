@@ -6,6 +6,7 @@ resource "azurerm_linux_web_app" "example" {
   service_plan_id           = var.service_plan_id
   https_only                = var.https_only
   virtual_network_subnet_id = var.virtual_network_subnet_id
+  public_network_access_enabled = var.public_network_access_enabled
 
   site_config {
     ftps_state             = var.ftps_state
@@ -60,6 +61,12 @@ resource "azurerm_linux_web_app" "example" {
         java_version = var.stack_version
       }
     }
+  }
+  lifecycle {
+    ignore_changes = [ 
+      tags,
+      site_config[0].ip_restriction,
+      ]
   }
 }
 

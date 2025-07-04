@@ -45,7 +45,11 @@ variable "vnet_route_all_enabled" {
   description = "Enable all outbound traffic to go through the VNet."
   default     = true
 }
-
+variable "public_network_access_enabled" {
+  type = bool
+  default = false
+  description = "To allow the public access"
+}
 variable "https_only" {
   type        = bool
   description = "Enforce HTTPS-only traffic."
