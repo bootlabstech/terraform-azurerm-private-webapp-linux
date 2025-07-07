@@ -65,7 +65,7 @@ resource "azurerm_linux_web_app" "example" {
   lifecycle {
     ignore_changes = [ 
       tags,
-      site_config[0].ip_restriction,
+      site_config[0].ip_restriction
       ]
   }
 }
